@@ -6,12 +6,13 @@ use App\Entity\User;
 use App\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class RegistrationController extends AbstractController
 {
-    private $passwordEncoder;
+    private UserPasswordEncoderInterface $passwordEncoder;
 
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -21,7 +22,7 @@ class RegistrationController extends AbstractController
     /**
      * @Route("/registration", name="registration")
      */
-    public function index(Request $request)
+    public function index(Request $request): Response
     {
         $user = new User();
 
