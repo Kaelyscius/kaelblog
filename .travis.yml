@@ -1,0 +1,29 @@
+language: php
+php:
+#  - '7.1' incompatible since add Symfony/Panther. It's require PHP 7.2 min.
+#  - '7.2'
+  - '7.3'
+  - '7.4'
+#  - '8.0'
+#  - nightly #Last hot version
+
+#  Use when we do functional test with Panther
+addons:
+  chrome: stable
+
+cache:
+  directories:
+  - $HOME/.composer/cache
+
+before_install:
+  - wget https://cs.symfony.com/download/php-cs-fixer-v2.phar -O php-cs-fixer
+
+before_script:
+  - phpenv config-rm xdebug.ini
+  - composer install
+
+
+script:
+#  - php bin/phpunit // no test at the moment
+  - php php-cs-fixer fix --dry-run --diff --no-ansi src
+  - vendor/bin/phpstan analyse src tests -l 8

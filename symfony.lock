@@ -84,6 +84,9 @@
     "egulias/email-validator": {
         "version": "2.1.20"
     },
+    "hamcrest/hamcrest-php": {
+        "version": "v2.0.1"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -92,6 +95,9 @@
     },
     "laminas/laminas-zendframework-bridge": {
         "version": "1.1.1"
+    },
+    "mockery/mockery": {
+        "version": "1.4.2"
     },
     "monolog/monolog": {
         "version": "2.1.1"
@@ -113,6 +119,21 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.4.0"
+    },
+    "phpstan/phpstan": {
+        "version": "0.12.43"
+    },
+    "phpstan/phpstan-doctrine": {
+        "version": "0.12.19"
+    },
+    "phpstan/phpstan-mockery": {
+        "version": "0.12.7"
+    },
+    "phpstan/phpstan-phpunit": {
+        "version": "0.12.16"
+    },
+    "phpstan/phpstan-symfony": {
+        "version": "0.12.7"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -506,6 +527,9 @@
     },
     "symfony/yaml": {
         "version": "v5.1.5"
+    },
+    "thecodingmachine/phpstan-strict-rules": {
+        "version": "v0.12.1"
     },
     "twig/extra-bundle": {
         "version": "v3.0.5"
