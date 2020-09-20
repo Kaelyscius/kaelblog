@@ -46,6 +46,7 @@
         "phpstan/phpstan-mockery": "^0.12.7",
         "phpstan/phpstan-phpunit": "^0.12.16",
         "phpstan/phpstan-symfony": "^0.12.7",
+        "povils/phpmnd": "^2.3",
         "symfony/browser-kit": "^5.1",
         "symfony/css-selector": "^5.1",
         "symfony/debug-bundle": "^5.1",

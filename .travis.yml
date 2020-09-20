@@ -27,3 +27,4 @@ script:
 #  - php bin/phpunit // no test at the moment
   - php php-cs-fixer fix --dry-run --diff --no-ansi src
   - vendor/bin/phpstan analyse src tests -l 8
+  - vendor/povils/phpmnd/bin/phpmnd src

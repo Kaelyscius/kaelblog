@@ -48,8 +48,7 @@ Check vulnerability of dependencies :
 - PHPCodeFixer : https://github.com/wapmorgan/PhpCodeFixer
 - PHP Mess Detector
 - PHP Code Sniffer : https://github.com/squizlabs/PHP_CodeSniffer
-inspire by this article : 
-https://web-techno.net/code-quality-check-tools-php/
+
 
 And first experience with CI and some quality tools on this repo : 
 https://github.com/FBADreamTeam/coworking

@@ -1,5 +1,7 @@
 ###> PHPSTORM ###
-.idea
+/.idea/
+# Ignore .idea files
+.idea/
 ###> PHPSTORM ###
 
 ###> symfony/framework-bundle ###
