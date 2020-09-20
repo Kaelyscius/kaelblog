@@ -10,16 +10,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class ReviewArticle extends AbstractArticle
 {
-
     /**
      * @ORM\Column(type="float")
      */
-	private ?float $score;
+    private ?float $score;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-	private ?string $externalLink;
+    private ?string $externalLink;
 
     public function getScore(): ?float
     {

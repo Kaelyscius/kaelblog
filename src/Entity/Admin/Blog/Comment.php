@@ -15,33 +15,33 @@ class Comment
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-	private ?int $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-	private ?string $status;
+    private ?string $status;
 
     /**
      * @ORM\Column(type="string", length=50)
      */
-	private ?string $ipUser;
+    private ?string $ipUser;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-	private ?string $author;
+    private ?string $author;
 
     /**
      * @ORM\Column(type="boolean")
      */
-	private ?bool $softDelete;
+    private ?bool $softDelete;
 
     /**
      * @ORM\ManyToOne(targetEntity=AbstractArticle::class, inversedBy="comment")
      * @ORM\JoinColumn(nullable=false)
      */
-	private ?AbstractArticle $articles;
+    private ?AbstractArticle $articles;
 
     public function getId(): ?int
     {

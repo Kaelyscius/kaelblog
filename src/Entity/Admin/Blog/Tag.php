@@ -17,22 +17,22 @@ class Tag
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-	private ?int $id;
+    private ?int $id;
 
     /**
      * @ORM\Column(type="string", length=100)
      */
-	private ?string $label;
+    private ?string $label;
 
     /**
      * @ORM\Column(type="string", length=150)
      */
-	private ?string $slug;
+    private ?string $slug;
 
     /**
      * @ORM\ManyToMany(targetEntity=AbstractArticle::class, mappedBy="Tags")
      */
-	private ArrayCollection $articles;
+    private ArrayCollection $articles;
 
     public function __construct()
     {
