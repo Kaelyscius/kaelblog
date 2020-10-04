@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+
+    {{ include('components/_nav.html.twig') }}
+
+    <div class="nk-main">
+        <div class="nk-gap-2"></div>
+            {% block content %}
+            {% endblock %}
+        <div class="container">
+        </div>
+    </div>
+
+    {{ include('components/footer.html.twig') }}
+    {{ include('components/modal.html.twig') }}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+

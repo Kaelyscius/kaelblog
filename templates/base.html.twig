@@ -1,46 +1,115 @@
-{#<!DOCTYPE html>#}
-{#<html>#}
-{#    <head>#}
-{#        <meta charset="UTF-8">#}
-{#        <title>{% block title %}Welcome!{% endblock %}</title>#}
-{#        {% block stylesheets %}{% endblock %}#}
-{#    </head>#}
-{#    <body>#}
-{#        {% block body %}{% endblock %}#}
-{#        {% block javascripts %}{% endblock %}#}
-{#    </body>#}
-{#</html>#}
-{# templates/base.html.twig #}
 <!DOCTYPE html>
-<html>
+<html lang="{{ app.request.locale|split('_')[0] }}">
 <head>
-    <meta charset="UTF-8" />
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    />
-    {% block stylesheets %}{% endblock %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}">
+    <meta name="author" content="Kaelyscius">
+
+    <title>{% block title %}
+        {% block page_title '' %} |
+        {% block site_title 'GoodGames' %}
+        {% endblock title %}| 404</title>
+
+    <meta name="description" content="GoodGames - Bootstrap template for communities and games store">
+    <meta name="keywords" content="game, gaming, template, HTML template, responsive, Bootstrap, premium">
+    <meta name="author" content="_nK">
+
+    <!-- START: Styles -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7cOpen+Sans:400,700" rel="stylesheet" type="text/css">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ app.request.getSchemeAndHttpHost() ~ asset('/build/vendor/bootstrap/dist/css/bootstrap.min.css') }}">
+    <!-- FontAwesome -->
+    <script defer src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/fontawesome-free/js/all.js') }}"></script>
+    <script defer src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/fontawesome-free/js/v4-shims.js') }}"></script>
+    <!-- IonIcons -->
+    <link rel="stylesheet" href="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/ionicons/css/ionicons.min.css') }}">
+    <!-- Flickity -->
+    <link rel="stylesheet" href="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/flickity/dist/flickity.min.css') }}">
+    <!-- Photoswipe -->
+    <link rel="stylesheet" type="text/css" href="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/photoswipe/dist/photoswipe.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/photoswipe/dist/default-skin/default-skin.css') }}">
+    <!-- Seiyria Bootstrap Slider -->
+    <link rel="stylesheet" href="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/bootstrap-slider/dist/css/bootstrap-slider.min.css') }}">
+    <!-- Summernote -->
+    <link rel="stylesheet" type="text/css" href="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/summernote/dist/summernote-bs4.css') }}">
+    <!-- GoodGames -->
+    <link rel="stylesheet" href="{{ app.request.getSchemeAndHttpHost() ~ asset('build/css/goodgames.min.css') }}">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{{ app.request.getSchemeAndHttpHost() ~ asset('build/css/custom.css') }}">
+    <!-- END: Styles -->
+    <!-- jQuery -->
+    <script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/jquery/dist/jquery.min.js') }}"></script>
+
+    {#    {{ encore_entry_link_tags('app') }}#}
+
+    {% block stylesheets '' %}
+
+
 </head>
-<body>
-<nav
-        class="navbar navbar-expand-lg navbar-light bg-light"
-        style="height: 70px;"
+
+<body id="body"
+      data-baseurl="{{ app.request.getSchemeAndHttpHost() }}{{ app.request.getBaseURL() }}"
+      data-webbaseurl="{{ asset('')}}"
+      data-language="{{ app.request.locale|split('_')[0] }}"
+      data-languageiso="{{ app.request.locale|split('_')[0]|lower }}-{{ app.request.locale|split('_')[0]|upper }}"
+      data-webjs="{{ app.request.getSchemeAndHttpHost() }}{{ asset('')}}"
 >
-    <a class="navbar-brand" href="#">Symfony</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent"></div>
-    <ul class="nav navbar-nav navbar-right">
-        {% if app.user %}
-            <li><a class="nav-link" href="{{ path('list') }}">View List</a></li>
-            <li><a class="nav-link" href="{{ path('app_logout') }}">Logout</a></li>
-        {% else %}
-            <li><a class="nav-link" href="{{ path('app_login') }}">Login</a></li>
-            <li>
-                <a class="nav-link" href="{{ path('registration') }}">Register</a>
-            </li>
-        {% endif %}
-    </ul>
-</nav>
-{% block body %}{% endblock %} {% block javascripts %}{% endblock %}
+
+{% block body '' %}
+
+<!-- END: Login Modal -->
+<!-- START: Scripts -->
+<!-- Object Fit Polyfill -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/object-fit-images/dist/ofi.min.js') }}"></script>
+<!-- GSAP -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/gsap/src/minified/TweenMax.min.js') }}"></script>
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/gsap/src/minified/plugins/ScrollToPlugin.min.js') }}"></script>
+<!-- Popper -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/popper.js/dist/umd/popper.min.js') }}"></script>
+<!-- Bootstrap -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- Sticky Kit -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/sticky-kit/dist/sticky-kit.min.js') }}"></script>
+<!-- Jarallax -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/jarallax/dist/jarallax.min.js') }}"></script>
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/jarallax/dist/jarallax-video.min.js') }}"></script>
+<!-- imagesLoaded -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/imagesloaded/imagesloaded.pkgd.min.js') }}"></script>
+<!-- Flickity -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/flickity/dist/flickity.pkgd.min.js') }}"></script>
+<!-- Photoswipe -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/photoswipe/dist/photoswipe.min.js') }}"></script>
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/photoswipe/dist/photoswipe-ui-default.min.js') }}"></script>
+<!-- Jquery Validation -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+<!-- Jquery Countdown + Moment -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/jquery-countdown/dist/jquery.countdown.min.js') }}"></script>
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/moment/min/moment.min.js') }}"></script>
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/moment-timezone/builds/moment-timezone-with-data.min.js') }}"></script>
+<!-- Hammer.js -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/hammerjs/hammer.min.js') }}"></script>
+<!-- NanoSroller -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/nanoscroller/bin/javascripts/jquery.nanoscroller.js') }}"></script>
+<!-- SoundManager2 -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/soundmanager2/script/soundmanager2-nodebug-jsmin.js') }}"></script>
+<!-- Seiyria Bootstrap Slider -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/bootstrap-slider/dist/bootstrap-slider.min.js') }}"></script>
+<!-- Summernote -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/vendor/summernote/dist/summernote-bs4.min.js') }}"></script>
+<!-- nK Share -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/plugins/nk-share/nk-share.js') }}"></script>
+<!-- GoodGames -->
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/js/goodgames.min.js') }}"></script>
+<script src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/js/goodgames-init.js') }}"></script>
+{#    {{ encore_entry_script_tags('app') }}#}
+
+<!-- END: Scripts -->
+{% block javascripts '' %}
+
+{% block final_javascripts '' %}
+
 </body>
 </html>
