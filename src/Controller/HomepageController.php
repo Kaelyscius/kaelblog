@@ -9,13 +9,15 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class DefaultController.
  */
-class DefaultController extends AbstractController
+class HomepageController extends AbstractController
 {
     /**
-     * @Route("/")
+     * @Route("/", name="homepage")
      */
     public function homepage(): Response
     {
-        return $this->render('index/index.html.twig', []);
+        return $this->render('index/index.html.twig', [
+            'controller_name' => 'SecurityController',
+        ]);
     }
 }

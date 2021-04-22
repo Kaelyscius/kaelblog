@@ -46,11 +46,24 @@ Additional Classes:
                             <span class="fa fa-search"></span>
                         </a>
                     </li>
+{#                    <li>#}
+{#                        <a href="#" data-toggle="modal" data-target="#modalLogin">#}
+{#                            <span class="fa fa-user"></span>#}
+{#                        </a>#}
+{#                    </li>#}
+
                     <li>
-                        <a href="#" data-toggle="modal" data-target="#modalLogin">
-                            <span class="fa fa-user"></span>
-                        </a>
-                    </li>
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a href="{{ path('app_logout') }}">
+                                <span class="fa fa-user"></span>  Se déconnecter
+                            </a>
+                        {% else %}
+                            <a href="{{ path('app_login') }}">
+                                <span class="fa fa-user"></span>  Se connecter
+                            </a>
+                        {% endif %}
+
+{#                    </li>#}
                 </ul>
             </div>
         </div>
@@ -68,7 +81,8 @@ Additional Classes:
         <div class="container">
             <div class="nk-nav-table">
                 <a href="index.html" class="nk-nav-logo">
-                    <img src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/images/logo.svg') }}" alt="GoodGames" width="199">
+
+                    <img src="{{ app.request.getSchemeAndHttpHost() ~ asset('build/images/kael.svg') }}" alt="GoodGames" width="199">
                 </a>
                 <ul class="nk-nav nk-nav-right d-none d-lg-table-cell" data-nav-mobile="#nk-nav-mobile">
                     <li class=" nk-drop-item">

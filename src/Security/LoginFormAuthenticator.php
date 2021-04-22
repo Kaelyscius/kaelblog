@@ -4,12 +4,14 @@ namespace App\Security;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Container\ContainerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\Security;
@@ -47,15 +49,18 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
      */
     private UserPasswordEncoderInterface $passwordEncoder;
 
+    private ContainerInterface $container;
+
     /**
      * LoginFormAuthenticator constructor.
      */
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder, ContainerInterface $container)
     {
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;
         $this->passwordEncoder = $passwordEncoder;
+        $this->container = $container;
     }
 
     /**
@@ -125,7 +130,15 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        return new RedirectResponse($this->urlGenerator->generate('list'));
+        return new RedirectResponse($this->urlGenerator->generate('homepage'));
+    }
+
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): RedirectResponse
+    {
+        $referer = $request->headers->get('referer');
+        $this->container->get('session')->getFlashBag()->add('error', $exception->getMessage());
+
+        return new RedirectResponse($referer);
     }
 
     /**

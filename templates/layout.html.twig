@@ -8,15 +8,14 @@
     {{ include('components/_nav.html.twig') }}
 
     <div class="nk-main">
-        <div class="nk-gap-2"></div>
-            {% block content %}
-            {% endblock %}
+{#        <div class="nk-gap-2"></div>#}
         <div class="container">
+            {% block content '' %}
         </div>
+        {{ include('components/footer.html.twig') }}
+        {{ include('components/modal.html.twig') }}
     </div>
 
-    {{ include('components/footer.html.twig') }}
-    {{ include('components/modal.html.twig') }}
 {% endblock %}
 
 {% block javascripts %}

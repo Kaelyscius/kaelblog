@@ -1,70 +1,80 @@
-{# templates/security/login.html.twig #} {% extends 'base.html.twig' %} {% block
-    title %}Log in!{% endblock %} {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 ml-md-auto">
-                <div class="">
-                    <div class="card bg-light mb-3 mt-5" style="width: 800px;">
-                        <div class="card-body">
-                            <form class="form-horizontal" role="form" method="post">
-                                {% if error %}
-                                    <div class="alert alert-danger">
-                                        {{ error.messageKey|trans(error.messageData, 'security') }}
-                                    </div>
-                                {% endif %} {% if app.user %}
-                                    <div class="mb-3">
-                                        You are logged in as {{ app.user.username }},
-                                        <a href="{{ path('app_logout') }}">Logout</a>
-                                    </div>
-                                {% endif %}
-                                <div class="card-header mb-3">Please sign in</div>
-                                <div class="form-group">
-                                    <label for="email" class="col-md-4 control-label"
-                                    >E-Mail Address</label
-                                    >
-                                    <div class="col-md-12">
-                                        <input
-                                                id="inputEmail"
-                                                type="email"
-                                                class="form-control"
-                                                name="email"
-                                                value="{{ last_username }}"
-                                                required
-                                                autofocus
-                                        />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password" class="col-md-4 control-label"
-                                    >Password</label
-                                    >
-                                    <div class="col-md-12">
-                                        <input
-                                                id="inputPassword"
-                                                type="password"
-                                                class="form-control"
-                                                name="password"
-                                                required
-                                        />
-                                    </div>
-                                </div>
-                                <input
-                                        type="hidden"
-                                        name="_csrf_token"
-                                        value="{{ csrf_token('authenticate') }}"
-                                />
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="fa fa-btn fa-sign-in"></i> Login
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+{% extends 'layout.html.twig' %}
+{% block title %}Log in!{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="d-flex align-items-center flex-column justify-content-center h-100 bg-dark-1 text-white" id="header">
+        <div class="nk-gap-4"></div>
+
+        <h4 class="mb-0"><span class="text-main-1">Sign</span> In</h4>
+        <div class="nk-gap-1"></div>
+        <form  class="nk-form text-white w-75 align-items-center" role="form" method="post" action="{{ path('app_login') }}">
+            {% if error %}
+                <div class="alert alert-danger">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %} {% if app.user %}
+                <div class="mb-3">
+                    You are logged in as {{ app.user.username }},
+                    <a href="{{ path('app_logout') }}">Logout</a>
+                </div>
+            {% endif %}
+            <div class="row vertical-gap">
+                <div class="col-md-6"> Use email and password: <div class="nk-gap"></div>
+                    <input id="inputEmail"
+                           type="email"
+                           class="form-control"
+                           name="email"
+                           value="{{ last_username }}"
+                           required
+                           autofocus
+                           placeholder="Email">
+                    <div class="nk-gap"></div>
+                    <input id="inputPassword"
+                           type="password"
+                           name="password"
+                           class="required form-control"
+                           placeholder="Password"
+                           required >
+                    <input
+                            type="hidden"
+                            name="_csrf_token"
+                            value="{{ csrf_token('authenticate') }}"
+                    />
+                </div>
+                <div class="col-md-6"> Or social account: <div class="nk-gap"></div>
+                    <ul class="nk-social-links-2">
+                        <li><a class="nk-social-facebook" href="#"><span class="fab fa-facebook"></span></a></li>
+                        <li><a class="nk-social-google-plus" href="#"><span class="fab fa-google-plus"></span></a></li>
+                        <li><a class="nk-social-twitter" href="#"><span class="fab fa-twitter"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nk-gap-1"></div>
+            <div class="row vertical-gap">
+                <div class="col-md-6">
+                    <button type="submit" class="nk-btn nk-btn-rounded nk-btn-color-white nk-btn-block">
+                        <i class="fa fa-btn fa-sign-in"></i> Login
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <div class="mnt-5">
+                        <small><a href="#">Forgot your password?</a></small>
+                    </div>
+                    <div class="mnt-5">
+                        <small><a href="#">Not a member? Sign up</a></small>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
+        <div class="nk-gap-2"></div>
+
     </div>
+
+{% endblock %}
+
+{% block javascripts %}
 {% endblock %}

@@ -1,7 +1,7 @@
 # Personal Website
 [![Build Status](https://travis-ci.org/Kaelyscius/kaelblog.svg?branch=master)](https://travis-ci.org/Kaelyscius/kaelblog)
-[![Maintainability](https://api.codeclimate.com/v1/badges/751145642862d006265d/maintainability)](https://codeclimate.com/github/Kaelyscius/kaelblog/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/751145642862d006265d/test_coverage)](https://codeclimate.com/github/Kaelyscius/kaelblog/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/96fdf5a2da7d60570c5f/maintainability)](https://codeclimate.com/github/Kaelyscius/kaelblog/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/96fdf5a2da7d60570c5f/test_coverage)](https://codeclimate.com/github/Kaelyscius/kaelblog/test_coverage)ais
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Kaelyscius/kaelblog/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Kaelyscius/kaelblog/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/Kaelyscius/kaelblog/badges/build.png?b=master)](https://scrutinizer-ci.com/g/Kaelyscius/kaelblog/build-status/master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/Kaelyscius/kaelblog/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
