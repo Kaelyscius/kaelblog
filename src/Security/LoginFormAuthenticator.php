@@ -138,6 +138,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         $referer = $request->headers->get('referer');
         $this->container->get('session')->getFlashBag()->add('error', $exception->getMessage());
 
+        /* @var string $referer */
         return new RedirectResponse($referer);
     }
 
